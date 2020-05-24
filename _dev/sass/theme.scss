@@ -1,0 +1,14 @@
+@import './partials/_partials/reset';
+@import './partials/_partials/_variables';
+@import './partials/account';
+@import './partials/header';
+@import './partials/inscription';
+// @import './partials/caroussel';
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-family: $font;
+}
