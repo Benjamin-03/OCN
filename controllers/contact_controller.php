@@ -8,9 +8,8 @@ if(!empty($_POST) && isset($_POST['btnContact'])){
             $message = str_secure($_POST['message']);
 
             $message .= ' - email envoyé par: '.$firsname.' : '.$email;
-            debug($message);
 
-            mail('benjamin@france-automatismes.com', 'On me contact sur monsite', $message);
+            mail('benjamin.rezel@orange.fr', 'On me contact sur monsite', $message);
 
         } else {
             $error = 'Vous devez remplir tous les champs !';

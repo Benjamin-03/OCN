@@ -1,23 +1,30 @@
 <?php 
 
-include_once '../_config/config.php';
+include_once '_config/config.php';
 include_once '_classes/Autoloader.php';
-include_once '../_functions/functions.php';
+include_once '_functions/functions.php';
+
+// header('location: views/connexion_view.php');
+// exit();
 
 Autoloader::register();
-include_once '../_config/db.php';
+include_once '_config/db.php';
 
 // definition de la page courante
 if(isset($_GET['page']) && !empty($_GET['page'])){
     $page = trim(strtolower($_GET['page']));
 } else {
-    $page = 'home';
+    $page = 'connexion';
 } 
+
+$_SESSION['lang'] = getUserLanguage();
 
 // array contenant toutes les pages
 $allPages = scandir('controllers/');
 
 if(in_array($page.'_controller.php', $allPages)){
+
+    $lang = getPageLanguage($_SESSION['lang'], ['header', $page, 'footer']);
 
     // inclusion de la page
     include_once 'models/'.$page.'_model.php';

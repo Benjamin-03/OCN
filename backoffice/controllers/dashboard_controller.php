@@ -1,7 +1,7 @@
 <?php 
 
-if(isset($_SESSION['connect'])){
-    header('location: dashboard');
+if(!isset($_SESSION['connect'])){
+    header('location: connexion');
     exit();
 }
 
@@ -22,21 +22,20 @@ if(!empty($_POST) && isset($_POST['btnConnexion'])){
             if($count != 0){
 
                 $log = Log::getAdminFromEmail($email);
-                var_dump($log['password']);
+                var_dump($log);
 
                 if($log['password'] == $mdp){
-                    
                     $_SESSION['connect'] = 1;
                     $_SESSION['secret'] = $log['secret'];
 
-                    // if(isset($_POST['auto'])){
-                    //     setcookie('auth', $log['email'], time()+364*24*3600, '/', null, false, true);
-                    // }
+                    if(isset($_POST['auto'])){
+                        setcookie('auth', $log['email'], time()+364*24*3600, '/', null, false, true);
+                    }
                 }
 
             } else {
-                header('location: connexion?error=1&nonAuth=1');
-                exit();
+                $error = 'Compte inexistant';
+
             }
         } else {
             $error = 'Vous devez remplir tous les champs !';

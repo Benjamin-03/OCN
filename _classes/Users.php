@@ -1,6 +1,6 @@
 <?php 
 
-class Authors {
+class Users {
 
     public $id;
     public $pseudo;
