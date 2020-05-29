@@ -1,0 +1,32 @@
+.sb-topnav {
+    padding-left: 0;
+    height: 56px;
+    z-index: 1039;
+
+    .navbar-brand {
+        width: 225px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0;
+    }
+
+    #sidebarToggle {
+        color: rgba(255, 255, 255, .5);
+
+        svg:not(:root).svg-inline--fa {
+            overflow: visible;
+        }
+
+        .svg-inline--fa {
+            display: inline-block;
+            font-size: inherit;
+            height: 1em;
+            overflow: visible;
+            vertical-align: -.125em;
+
+            &.fa-w-14 {
+                width: .875em;
+            }
+        }
+    }
+}

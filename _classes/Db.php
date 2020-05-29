@@ -4,7 +4,6 @@
  * Class DB
  * This PHP class allows you to simplify SQL requests (with PDO)
  *
- * Created by Axel Paris (contact@axelparis.fr)
  */
 class Db {
 

@@ -18,29 +18,21 @@ function debug($var){
         var_dump($var);
     echo '</pre>';
 }
-/**
- * Détecte le language dans l'url
- */
-function getUserLanguage(){
-    if(isset($_GET['lang']) && !empty($_GET['lang'])){
-        $lang = str_secure(strtolower($_GET['lang']));
-        $availableLanguage = ['en', 'fr'];
 
-        return (in_array($lang, $availableLanguage)) ? $lang : DEFAULT_LANGUAGE;
-    } else {
-        return (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) ? $_SESSION['lang'] : DEFAULT_LANGUAGE;
-    }
+function displayError(string $page, string $message){
+    header('location: '.$page.'?error=1&message='.$message);
+    exit();
 }
 
-function getPageLanguage($lang, $pages){
-    
-    $dataPage = [];
+function displaySuccess(string $page, string $message){
+    header('location: '.$page.'?success=1&message='.$message);
+    exit();
+}
 
-    foreach($pages as $page){
-        $jsonString = file_get_contents('_lang/'.$lang.'/'.$page.'.json');
-        $json = json_decode($jsonString);
-        $dataPage[$page] = $json;
+function getMessage() {
+    if(isset($_GET['error']) && isset($_GET['message'])){
+        echo '<div class="alert alert-danger">'.$_GET['message'].'</div>';
+    } else if(isset($_GET['success']) && isset($_GET['message'])){
+        echo '<div class="alert alert-success">'.$_GET['message'].'</div>';
     }
-
-    return (object) $dataPage;
 }

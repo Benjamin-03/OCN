@@ -1,14 +1,33 @@
+// libraries
+@import 'bootstrap';
+
+// tools
 @import './partials/_partials/reset';
 @import './partials/_partials/_variables';
-@import './partials/account';
-@import './partials/header';
-@import './partials/inscription';
-// @import './partials/caroussel';
+@import './partials/_partials/header';
+@import './partials/_partials/aside';
+@import './partials/_partials/content';
 
-* {
-    box-sizing: border-box;
-}
+// pages
+@import './partials/account';
+@import './partials/connexion';
+@import './partials/dashboard';
+// @import './partials/caroussel';
 
 html {
     font-family: $font;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
 }

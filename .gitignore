@@ -1,4 +1,5 @@
-node_module
+_dev/node_modules
+backoffice/_dev/node_modules
 yarn.lock
-assets/css
-assets/js
+/assets
+backoffice/assets

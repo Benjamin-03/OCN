@@ -8,13 +8,14 @@ class Users {
     public $profil;
     public $password;
     public $secret;
+    public $status;
 
     function __construct($id){
         global $db;
 
         $id = str_secure($id);
 
-        $req = $db->fetch('SELECT * FROM users WHERE id_user = ?', [], false);
+        $req = $db->fetch('SELECT * FROM users WHERE id_user = ?', [$id], false);
 
         $data = $req;
 
@@ -24,10 +25,11 @@ class Users {
         $this->profil = $data['profil'];
         $this->password = $data['password'];
         $this->secret = $data['secret'];
+        $this->blocked = $data['blocked'];
     }
 
     /**
-     * Envoie de toutes les auteurs
+     * Récupère tous les utilistateurs
      * @return array 
      */
     static function getAllUsers(){
